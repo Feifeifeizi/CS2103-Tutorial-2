@@ -121,7 +121,7 @@ private:
 	static int location(string newStartLocation, string newEndLocation);
 	static bool sameRoute(string startLocation1, string endLocation1, string startLocation2, string endLocation2);
 
-	static bool isValidLocation(vector<string> locations);
+	static void isValidLocation(vector<string> locations);
 	static bool isPositiveNonZeroInt(string s);
 	static string removeFirstWord(string userCommand);
 	static string getFirstWord(string userCommand);

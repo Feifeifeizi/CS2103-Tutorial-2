@@ -182,7 +182,7 @@ string CityConnect::getDistance(string userCommand) {
  *    newStartLocation and newEndLocation. Returns NOT_FOUND if not found.
  */
 int CityConnect::getPositionOfExistingRoute(string newStartLocation, string newEndLocation) {
-	for (int i = 0; i < sizeOfArray(route); i++) {
+	for (unsigned int i = 0; i < sizeOfArray(route); i++) {
 			
 		string existing_start_location = route[i][STORAGE_POSITION_START_LOCATION];
 		string existing_end_location = route[i][STORAGE_POSITION_END_LOCATION];
@@ -250,7 +250,7 @@ void CityConnect::addRouteAtPosition(string newStartLocation, string newEndLocat
  *   no suitable slot is found.
  */
 int CityConnect::location(string newStartLocation, string newEndLocation) {
-	for (int i = 0; i < sizeOfArray(route); i++) {
+	for (unsigned int i = 0; i < sizeOfArray(route); i++) {
 
 		string existingStartLocation = route[i][STORAGE_POSITION_START_LOCATION];
 		string existingEndLocation = route[i][STORAGE_POSITION_END_LOCATION];
@@ -270,7 +270,7 @@ int CityConnect::location(string newStartLocation, string newEndLocation) {
 * This operation checks if positions are empty
 */
 
-bool CityConnect::isValidLocation(vector<string> locations){
+void CityConnect::isValidLocation(vector<string> locations){
 	for (unsigned int i = 0; i < locations.size(); i++){
 		if (locations[i].empty()){
 			showToUser(ERROR_NULL_ROUTE_ENDPT);
