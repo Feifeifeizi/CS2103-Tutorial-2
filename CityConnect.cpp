@@ -322,8 +322,7 @@ string CityConnect::removeFirstWord(string userCommand){
 }
 
 string CityConnect::getFirstWord(string userCommand){
-	string commandTypeString = splitParameters(userCommand)[0];
-	return commandTypeString;
+	return splitParameters(userCommand)[0];
 }
 
 // This method only split string based on delimiter space
