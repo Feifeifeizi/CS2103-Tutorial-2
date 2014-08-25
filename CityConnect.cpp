@@ -156,10 +156,7 @@ string CityConnect::getDistance(string userCommand) {
 
 	vector<string> parameters = splitParameters(removeFirstWord(userCommand));
 
-	if(parameters.size() < PARAM_SIZE_GET_DISTANCE) {
-		sprintf_s(buffer, MESSAGE_INVALID_FORMAT.c_str(), userCommand.c_str());
-		return buffer;
-	}
+	if (!paramCheck(parameters, PARAM_SIZE_GET_DISTANCE, userCommand)) return buffer;
 		
 	string newStartLocation = parameters[PARAM_POSITION_START_LOCATION];
 	string newEndLocation = parameters[PARAM_POSITION_END_LOCATION];
@@ -199,6 +196,18 @@ int CityConnect::getPositionOfExistingRoute(string newStartLocation, string newE
 }
 
 /**
+* This method checks that the parameters are of the right size
+*/
+
+bool CityConnect::paramCheck(vector<string> parameters, unsigned int expectedSize, string userCommand){
+	if (parameters.size() < expectedSize){
+		sprintf_s(buffer, MESSAGE_INVALID_FORMAT.c_str(), userCommand.c_str());
+		return false;
+	}
+	return true;
+}
+
+/**
  * This operation adds a route to the storage. If the route already exists,
  * it will be overwritten.
  * 
@@ -211,10 +220,7 @@ string CityConnect::addRoute(string userCommand) {
 
 	vector<string> parameters = splitParameters(removeFirstWord(userCommand));
 
-	if(parameters.size() < PARAM_SIZE_ADD_ROUTE){
-		sprintf_s(buffer, MESSAGE_INVALID_FORMAT.c_str(), userCommand.c_str());
-		return buffer;
-	}
+	if (!paramCheck(parameters, PARAM_SIZE_ADD_ROUTE, userCommand)) return buffer;
 		
 	string newStartLocation = parameters[PARAM_POSITION_START_LOCATION];
 	string newEndLocation = parameters[PARAM_POSITION_END_LOCATION];

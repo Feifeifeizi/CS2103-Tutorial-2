@@ -126,6 +126,7 @@ private:
 	static string removeFirstWord(string userCommand);
 	static string getFirstWord(string userCommand);
 	static vector<string> splitParameters(string commandParametersString);
+	static bool paramCheck(vector<string> parameters, unsigned int expectedSize, string userCommand);
 
 public:
 	static string executeCommand(string userCommand);
