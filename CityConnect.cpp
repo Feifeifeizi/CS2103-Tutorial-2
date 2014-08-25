@@ -267,19 +267,34 @@ int CityConnect::location(string newStartLocation, string newEndLocation) {
 }
 
 /**
- * This operation checks if two routes represents the same route.
- */
-bool CityConnect::sameRoute(string startLocation1, 
-	string endLocation1, string startLocation2, string endLocation2) {
+* This operation checks if positions are empty
+*/
 
-	if((startLocation1.empty())||(endLocation1.empty())
-				&&(startLocation2.empty())||(endLocation2.empty())) {			
+bool CityConnect::isValidLocation(vector<string> locations){
+	for (unsigned int i = 0; i < locations.size(); i++){
+		if (locations[i].empty()){
 			showToUser(ERROR_NULL_ROUTE_ENDPT);
 			showToUser(MESSAGE_PROGRAM_TERMINATION);
 
 			getchar();
 			exit(EXIT_FAILURE);
+		}
 	}
+}
+
+/**
+ * This operation checks if two routes represents the same route.
+ */
+bool CityConnect::sameRoute(string startLocation1, 
+	string endLocation1, string startLocation2, string endLocation2) {
+
+	vector<string> locations;
+	locations.push_back(startLocation1);
+	locations.push_back(startLocation2);
+	locations.push_back(endLocation1);
+	locations.push_back(endLocation2);
+	isValidLocation(locations);
+
 		
 	return (equalsIgnoreCase(startLocation1, startLocation2) && equalsIgnoreCase(endLocation1, endLocation2))
 			||(equalsIgnoreCase(startLocation1, endLocation2) && equalsIgnoreCase(endLocation1, startLocation2));
